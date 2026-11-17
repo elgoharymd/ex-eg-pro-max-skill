@@ -31,6 +31,7 @@ Load only the files the current task needs. Everything else stays unloaded.
 | Dashboard, app screen, complex form | `references/spacing-and-layout.md` · `references/responsive-design.md` | `accessibility.md` · `checklists/design-review.md` |
 | Redesign or visual polish | `references/design-philosophy.md` · `examples/bad-design-patterns.md` | `visual-quality.md` · `checklists/design-review.md` |
 | RTL / Arabic project | `references/rtl-arabic.md` | any of the above that also applies |
+| Icons or illustrations needed | `references/visual-assets.md` | `references/creative-direction.md` |
 | Code cleanup or architecture | `references/clean-code.md` · `references/software-architecture.md` | `checklists/code-review.md` |
 | Responsive bug | `references/responsive-design.md` | `checklists/responsive-review.md` |
 | Frontend implementation | `references/frontend-engineering.md` | `references/performance.md` · `references/accessibility.md` |
@@ -86,16 +87,19 @@ Do not claim a check passed unless you ran it in this session.
 
 ## Design rules (summary)
 
+- **Originality is mandatory.** The design must be unrecognizable as AI output. If it can be described as "modern and clean," it has not been designed yet.
+- Write a direction brief (anchor, feeling, avoid) before the first component.
 - Design for a specific audience and purpose. Every element must justify its presence.
 - Avoid template look: no default card grids, no decoration-only gradients, no icon-on-every-line.
 - Color palette: small, role-based tokens (surface, text, muted, accent, success, warning, danger).
-- Typography: two families at most, a named type scale, consistent line heights.
+- Typography: two families at most, a named type scale, consistent line heights. **No AI-looking fonts** (Inter, DM Sans, Poppins, Nunito, Plus Jakarta Sans, Outfit — see typography.md for the full list and alternatives).
 - Spacing: one scale (e.g. 4 · 8 · 12 · 16 · 24 · 32 · 48 · 64). No arbitrary values for the same role.
 - Every interactive element: default · hover · focus-visible · active · disabled · loading · error · success.
 - Empty states, loading states, and error states deserve the same care as the happy path.
 - Motion: purposeful, < 300 ms for feedback, respects `prefers-reduced-motion`.
+- **Icons are AI-generated images** (Gemini or ChatGPT). Never SVG libraries, never inline SVG code.
 
-Details → `references/design-philosophy.md` · `visual-quality.md` · `typography.md` · `spacing-and-layout.md`
+Details → `references/design-philosophy.md` · `creative-direction.md` · `visual-quality.md` · `typography.md` · `spacing-and-layout.md` · `visual-assets.md`
 
 ## Responsive rules (summary)
 
@@ -178,7 +182,9 @@ Write "not run — reason" for every skipped check.
 | Checks run | command · result |
 | Checks not run | check · reason |
 | Known issues | issue · risk · follow-up |
-| Next steps | if any |
+| **Suggested improvements** | **3–5 proactive professional suggestions (mandatory — see `references/pro-suggestions.md`)** |
+
+The suggestions section is never skipped. It follows every delivery, large or small.
 
 ---
 

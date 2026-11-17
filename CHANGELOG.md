@@ -1,5 +1,29 @@
 # Changelog
 
+## v1.3.0 — 2026-11-17
+
+### Added
+- `references/visual-assets.md` — icons as AI-generated images (Gemini/ChatGPT). No SVG libraries. No inline SVG icons. Includes style prefix system, prompt templates, file naming, code usage, and consistency rules.
+- `references/pro-suggestions.md` — mandatory 3–5 proactive improvement suggestions after every delivery. Defines strong vs weak suggestions, format, categories, and tone.
+
+### Changed
+- `references/creative-direction.md` — added originality mandate ("design must be unrecognizable as AI output"), "unexpected angle" method, and reference to `visual-assets.md` and `pro-suggestions.md`.
+- `references/typography.md` — added "No AI-looking fonts" section with explicit blacklist (Inter, DM Sans, Plus Jakarta Sans, Nunito, Outfit, Poppins, Lexend, Rubik, Montserrat, Raleway and Arabic equivalents) and curated whitelist of fonts with character and history for Latin and Arabic.
+- `references/design-philosophy.md` — added "AI-unrecognizable" test, banned fonts and SVG icon libraries in the "Human, not generated" section.
+- `SKILL.md` — added originality and icon rules to Design rules summary, added `visual-assets.md` routing row, made suggestions mandatory in delivery report format.
+
+---
+
+## v1.2.0 — 2026-11-17
+
+### Added
+- `references/logical-thinking.md` expanded with Three Questions test, element placement rules, scope contract, and complete element state coverage checklist.
+- `references/clean-code.md` expanded with mandatory "Actual cleanup" section.
+- `checklists/quick-audit.md` expanded with point 6: logical placement + complete states check.
+- `SKILL.md` — added "Logical software principle" and "Logical software rules" summary section.
+
+---
+
 ## v1.1.0 — 2026-11-17
 
 ### Added
