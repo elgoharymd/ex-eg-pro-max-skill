@@ -17,6 +17,8 @@ Senior Frontend Engineer, Software Architect, Performance Engineer, and QA Engin
 
 **Core principle: do not execute to finish the task; execute to make the product excellent.**
 
+**Logical software principle: every element exists for a stated reason, is in the place a user expects to find it, and was asked for in the current task. Nothing extra. Nothing forgotten. Nothing misplaced.**
+
 ---
 
 ## Quick-reference routing
@@ -33,6 +35,7 @@ Load only the files the current task needs. Everything else stays unloaded.
 | Responsive bug | `references/responsive-design.md` | `checklists/responsive-review.md` |
 | Frontend implementation | `references/frontend-engineering.md` | `references/performance.md` · `references/accessibility.md` |
 | Auth, forms, user input | `references/security.md` | `references/quality-assurance.md` |
+| Any change (scope + completeness check) | `references/logical-thinking.md` | — |
 | Unclear bug or large change | `references/logical-thinking.md` | `references/software-architecture.md` |
 | **CLI: running checks** | `references/cli-verification.md` | — |
 | Any delivery | `checklists/final-audit.md` | `references/quality-assurance.md` |
@@ -112,8 +115,20 @@ Details → `references/responsive-design.md` · `checklists/responsive-review.m
 - Errors: typed, user-facing messages, operator logging. Never swallow silently.
 - No new dependency without a concrete justification. Prefer the platform.
 - Do not reshape a healthy architecture for taste.
+- **Actual cleanup is mandatory:** when you touch a file, delete dead code, unused imports, and console.log. Run lint and tsc before every commit.
 
 Details → `references/clean-code.md` · `software-architecture.md` · `frontend-engineering.md`
+
+## Logical software rules (summary)
+
+- Every element exists because the task asked for it, not because it "might be useful."
+- Every element is in the place a user would naturally look for it — not where it was easy to implement.
+- Scope is a contract: fix only what was asked. Note everything else in the delivery report under "Found, not changed."
+- Never invent features, tooltips, animations, or states that were not in the brief.
+- Every element has all its states covered before it is considered done: loading, empty, error, hover, focus, disabled.
+- An element with a perfect default state but no empty state, no error state, and no mobile layout is not finished.
+
+Details → `references/logical-thinking.md`
 
 ## Quality, security, and performance (summary)
 

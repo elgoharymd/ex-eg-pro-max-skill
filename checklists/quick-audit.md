@@ -65,6 +65,19 @@ If the change does not touch data or user actions, mark this — (not applicable
 
 ---
 
+**6. Is every changed element logically placed and complete?**
+
+For every element added or modified:
+- Is it in the location where the user would naturally look for it?
+- Did the task actually ask for it, or was it invented "just in case"?
+- Does it have all its states: hover, focus, loading (if async), empty (if data-driven), error?
+
+For every file touched:
+- Is there any dead code, unused import, or `console.log` left?
+- Did the linter pass with zero new warnings?
+
+---
+
 ## Delivery note for quick changes
 
 ```
