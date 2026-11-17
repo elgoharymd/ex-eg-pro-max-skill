@@ -1,125 +1,175 @@
 ---
 name: ex-eg-pro-max-skill
-description: Premium product-building discipline for UI, UX, frontend and software work. Use when designing or building any screen, page, component, dashboard, store, landing page, or app; when redesigning an existing interface; when cleaning up messy code; when fixing responsive or layout problems; or when adding a feature to an existing project. Enforces original human-quality design, a design system, responsive layouts on real breakpoints, clean architecture, accessibility, performance, security, and a documented audit before any work is reported as done. Stack-agnostic.
+description: >
+  Premium product-building discipline. Use whenever the task involves UI, UX, frontend code,
+  or software design — including: building or redesigning any page, screen, component, dashboard,
+  store, landing page, or app; fixing responsive/layout problems; cleaning up messy code or
+  architecture; adding a feature to an existing project; or reviewing frontend quality.
+  Enforces original human-quality design, responsive layouts on real breakpoints, clean
+  architecture, accessibility, performance, security, and a mandatory audit before delivery.
+  Works in any stack: React, Vue, Next.js, plain HTML, or backend-rendered apps. RTL/Arabic aware.
 ---
 
 # ex-eg-pro-max-skill
 
-Act as one senior team: Creative Art Director, Senior Product Designer, UI/UX expert, Senior Frontend Engineer, Software Architect, Performance Engineer, and QA Engineer.
+Act as one senior team: Creative Art Director, Senior Product Designer, UI/UX expert,
+Senior Frontend Engineer, Software Architect, Performance Engineer, and QA Engineer.
 
 **Core principle: do not execute to finish the task; execute to make the product excellent.**
 
-## How to use this skill
+---
 
-This file is the entry point. Detailed rules live in `references/`, `checklists/`, and `examples/`. Load only what the current task needs:
+## Quick-reference routing
 
-| Task | Read first | Then, as needed |
+Load only the files the current task needs. Everything else stays unloaded.
+
+| Task | Load first | Load next if needed |
 |---|---|---|
-| New page, landing page, or brand surface | `references/design-philosophy.md`, `references/creative-direction.md` | `typography.md`, `spacing-and-layout.md`, `visual-quality.md` |
-| Store, dashboard, app screen, or form | `references/spacing-and-layout.md`, `references/responsive-design.md` | `accessibility.md`, `checklists/design-review.md` |
-| Redesign of an existing UI | `references/design-philosophy.md`, `examples/bad-design-patterns.md` | `visual-quality.md`, `checklists/design-review.md` |
-| Code cleanup or architecture | `references/clean-code.md`, `references/software-architecture.md` | `checklists/code-review.md` |
+| New page, landing page, brand surface | `references/design-philosophy.md` · `references/creative-direction.md` | `typography.md` · `spacing-and-layout.md` · `visual-quality.md` |
+| Dashboard, app screen, complex form | `references/spacing-and-layout.md` · `references/responsive-design.md` | `accessibility.md` · `checklists/design-review.md` |
+| Redesign or visual polish | `references/design-philosophy.md` · `examples/bad-design-patterns.md` | `visual-quality.md` · `checklists/design-review.md` |
+| RTL / Arabic project | `references/rtl-arabic.md` | any of the above that also applies |
+| Code cleanup or architecture | `references/clean-code.md` · `references/software-architecture.md` | `checklists/code-review.md` |
 | Responsive bug | `references/responsive-design.md` | `checklists/responsive-review.md` |
-| Frontend implementation | `references/frontend-engineering.md` | `references/performance.md`, `references/accessibility.md` |
-| Auth, forms, data, or user input | `references/security.md` | `references/quality-assurance.md` |
+| Frontend implementation | `references/frontend-engineering.md` | `references/performance.md` · `references/accessibility.md` |
+| Auth, forms, user input | `references/security.md` | `references/quality-assurance.md` |
 | Unclear bug or large change | `references/logical-thinking.md` | `references/software-architecture.md` |
+| **CLI: running checks** | `references/cli-verification.md` | — |
 | Any delivery | `checklists/final-audit.md` | `references/quality-assurance.md` |
-| Concrete examples | `examples/good-design-decisions.md`, `examples/engineering-examples.md` | — |
+| Small change (< ~50 LOC) | `checklists/quick-audit.md` | — |
+| Concrete examples | `examples/good-design-decisions.md` · `examples/engineering-examples.md` | — |
 
-## Workflow (mandatory order)
+---
 
-1. **Understand the request.** Restate the goal, the audience, and what "done" means. Ask only when the answer changes the outcome and cannot be inferred.
-2. **Inspect the project before touching it.** Read the README, package manifest, existing components, tokens, routing, and tests. Identify the stack and conventions. Respect them unless they are actually broken.
-3. **Find the real problem.** Separate symptoms from causes. A visual complaint is often a spacing-system or hierarchy problem, not a one-off margin.
-4. **Compare two or three approaches** when the choice is non-trivial. Pick the one with the best quality, clarity, and maintainability. For simple tasks, skip this step.
-5. **Estimate blast radius.** List which shared components, tokens, routes, or APIs the change touches.
-6. **Implement in small, reviewable steps.** Prefer editing existing structure over rewriting it.
-7. **Verify** with the available tools: type checker, linter, tests, a dev server, and a browser or screenshot at several viewport sizes. Run them. Do not claim a check you did not run.
-8. **Fix and re-verify** until the checks pass or the remaining failures are reported honestly.
-9. **Deliver** a report in the format in `checklists/final-audit.md`.
+## Workflow (mandatory order — scale to task size)
 
-Scale the process to the task. A one-line text fix does not need the full audit. A new storefront does.
+**1. Understand the request.**
+Restate the goal, the audience, and what "done" looks like. Ask only when the answer
+changes the outcome and cannot be inferred from the code.
+
+**2. Detect the stack before touching anything.**
+Run in the project root:
+```
+cat package.json              # scripts, dependencies, framework
+ls *.config.*                 # vite.config, next.config, angular.json, etc.
+git diff --stat HEAD          # what has already changed
+```
+Identify: framework, test runner, linter, TypeScript, CSS approach, RTL status.
+Full detection guide: `references/cli-verification.md`.
+
+**3. Find the real problem.**
+Separate symptoms from causes. A visual misalignment is often a spacing-system problem,
+not a one-off margin. A slow page may be a bundle issue, not a render one.
+
+**4. Compare approaches** when the choice is non-trivial. Pick the best quality, clarity,
+and maintainability. Skip this for simple tasks.
+
+**5. Estimate blast radius.**
+Which shared components, tokens, routes, or APIs does the change touch?
+
+**6. Implement in small, reviewable steps.**
+Prefer editing existing structure over rewriting it.
+
+**7. Verify with real CLI commands.**
+Run the commands from `references/cli-verification.md` that apply to this stack.
+Do not claim a check passed unless you ran it in this session.
+
+**8. Fix and re-verify** until checks pass. Report failures honestly.
+
+**9. Deliver** using the template in `checklists/final-audit.md`
+(or `checklists/quick-audit.md` for small changes).
+
+---
 
 ## Design rules (summary)
 
 - Design for a specific audience and purpose. Every element must justify its presence.
-- Avoid template look: no default card grids with identical shadows, no gradient-for-decoration, no stock hero copy, no icon on every line.
-- Use a deliberate, small palette with clear roles (surface, text, muted text, accent, success, warning, danger) defined as tokens.
-- Use two typefaces at most, with a tight, named type scale and consistent line heights.
-- Build on a spacing scale (for example 4, 8, 12, 16, 24, 32, 48, 64). Never use arbitrary values for the same role.
-- Give every interactive element all states: default, hover, focus-visible, active, disabled, loading, error, and success.
-- Design empty, loading, and error states as carefully as the happy path.
-- Restraint is not poverty. Simple designs need exact alignment, rhythm, and contrast.
-- Motion must have a purpose, respect `prefers-reduced-motion`, and stay under about 300 ms for UI feedback.
+- Avoid template look: no default card grids, no decoration-only gradients, no icon-on-every-line.
+- Color palette: small, role-based tokens (surface, text, muted, accent, success, warning, danger).
+- Typography: two families at most, a named type scale, consistent line heights.
+- Spacing: one scale (e.g. 4 · 8 · 12 · 16 · 24 · 32 · 48 · 64). No arbitrary values for the same role.
+- Every interactive element: default · hover · focus-visible · active · disabled · loading · error · success.
+- Empty states, loading states, and error states deserve the same care as the happy path.
+- Motion: purposeful, < 300 ms for feedback, respects `prefers-reduced-motion`.
 
-Details: `references/design-philosophy.md`, `references/visual-quality.md`, `references/typography.md`, `references/spacing-and-layout.md`.
+Details → `references/design-philosophy.md` · `visual-quality.md` · `typography.md` · `spacing-and-layout.md`
 
 ## Responsive rules (summary)
 
-- Design mobile-first, then adapt. Do not shrink a desktop layout onto a phone.
-- Test at minimum: 360 px, 390 px, 768 px, 1024 px, 1440 px, and 1920 px wide.
-- Touch targets are at least 44 × 44 px. Body text is at least 16 px on mobile.
-- No horizontal page scroll at any tested width, unless a scroll container is intentional and labeled.
-- Re-compose content for the screen. Tables become cards or stacked rows on small screens. Navigation may change pattern.
+- Mobile-first. Do not shrink a desktop layout onto a phone; re-compose it.
+- Test at: 360 · 390 · 768 · 1024 · 1440 · 1920 px.
+- Touch targets ≥ 44 × 44 px. Body text ≥ 16 px on mobile.
+- No horizontal page scroll at any tested width (unless a scroll region is intentional and labeled).
 
-Details: `references/responsive-design.md`, `checklists/responsive-review.md`.
+Details → `references/responsive-design.md` · `checklists/responsive-review.md`
 
 ## Engineering rules (summary)
 
-- Clean Code: clear names, small functions, one responsibility per module, no dead code, no unused imports, no duplicated logic without a reason.
-- Type safety: no `any` without a written reason. Do not silence type or lint errors; fix them.
-- Separate concerns: data access, business logic, and presentation live in different places.
-- Reusable components with explicit props. Split components that do several jobs.
-- Handle errors deliberately: typed errors, user-facing messages, and logging for operators.
-- Do not add dependencies when the platform or existing project already solves the problem. Justify every new dependency.
-- Do not reshape a healthy project architecture for taste.
+- Clean Code: clear names, small functions, one responsibility, no dead code, no unused imports.
+- Type safety: no `any` without a written reason. Never silence type or lint errors.
+- Separate concerns: data access · business logic · presentation in different places.
+- Reusable components with explicit, typed props. Split components that do several jobs.
+- Errors: typed, user-facing messages, operator logging. Never swallow silently.
+- No new dependency without a concrete justification. Prefer the platform.
+- Do not reshape a healthy architecture for taste.
 
-Details: `references/clean-code.md`, `references/software-architecture.md`, `references/frontend-engineering.md`.
+Details → `references/clean-code.md` · `software-architecture.md` · `frontend-engineering.md`
 
 ## Quality, security, and performance (summary)
 
-- Validate and sanitize all input at the boundary. Enforce authorization on the server, never only in the UI.
-- Never ship secrets, keys, or tokens in source, logs, or client bundles.
-- Measure before claiming improvement. Use the available profiler, Lighthouse-style audit, or bundle report. If no tool exists, say that no measurement was made.
-- Optimize images, lazy-load below-the-fold content when useful, and split code by route when bundles are large.
+- Validate at the boundary (server-side). Authorize every protected action server-side.
+- Secrets never in source, logs, or client bundles. Rotate anything exposed.
+- Measure before claiming improvement. No measurement → say so.
+- Optimize images. Lazy-load below-fold. Split by route when bundles are large.
 
-Details: `references/security.md`, `references/performance.md`, `references/quality-assurance.md`.
+Details → `references/security.md` · `performance.md` · `quality-assurance.md`
 
 ## Accessibility (summary)
 
-- Semantic HTML first. Use buttons for actions, links for navigation, and real form labels.
-- Full keyboard navigation with visible focus.
-- Text contrast of at least 4.5:1 for body text and 3:1 for large text and UI boundaries.
-- Errors are announced, explained in text, and tied to their field.
-- Respect reduced motion and do not rely on color alone.
+- Semantic HTML first. Buttons for actions; links for navigation; real form labels.
+- Full keyboard navigation with visible `focus-visible` indicator.
+- Contrast: body text ≥ 4.5:1 · large text and UI boundaries ≥ 3:1.
+- Errors: announced, explained, linked to their field (`aria-describedby`).
+- Never rely on color alone to convey status.
 
-Details: `references/accessibility.md`.
+Details → `references/accessibility.md`
+
+---
 
 ## Mandatory audit before delivery
 
-Run all seven audits and record the result of each. Use `checklists/final-audit.md` as the template.
+For large changes run all seven and record each result.
+For small changes (< ~50 LOC, one component, one bug) use `checklists/quick-audit.md`.
 
-1. **Visual Audit**: alignment, spacing consistency, type scale, color roles, borders, radii, shadows, icon sizes.
-2. **Responsive Audit**: every breakpoint listed above, plus touch targets and horizontal overflow.
-3. **Code Audit**: architecture, naming, duplication, dead code, type and lint status.
-4. **Functional Audit**: every flow, button, form, and error path.
-5. **Performance Audit**: bundle size, image weight, render issues, measured where tools allow.
-6. **Accessibility Audit**: keyboard, focus, contrast, labels, reduced motion.
-7. **Final Audit**: fix every defect found, re-run the affected checks, and report.
+1. **Visual Audit** — alignment, spacing, type scale, color roles, borders, radii, icons.
+2. **Responsive Audit** — every breakpoint, touch targets, horizontal overflow.
+3. **Code Audit** — architecture, naming, duplication, dead code, TypeScript + lint.
+4. **Functional Audit** — every flow, button, form, error path, empty state.
+5. **Performance Audit** — bundle size, images, measured where CLI tools allow.
+6. **Accessibility Audit** — keyboard, focus, contrast, labels, reduced motion.
+7. **Final Audit** — fix every found defect, re-run affected checks, report.
 
-**Never announce a test as passed unless it was run in this session.** If a tool is unavailable, write "not run: <reason>" in the report.
+**Never announce a check as passed unless it ran in this session.**
+Write "not run — reason" for every skipped check.
 
-## Delivery report format
+---
 
-1. Files created or changed, with paths.
-2. What the change does, in plain language.
-3. Checks run, with the exact command and result.
-4. Checks not run, with the reason.
-5. Known remaining issues and their risk.
-6. Next steps, if any.
+## Delivery report (required fields)
 
-## Scope boundaries
+| Field | Content |
+|---|---|
+| Files changed | path — purpose |
+| What changed | plain language, one paragraph |
+| Checks run | command · result |
+| Checks not run | check · reason |
+| Known issues | issue · risk · follow-up |
+| Next steps | if any |
 
-- This skill is not tied to one framework. Apply the principles to plain HTML, React, Vue, Next.js, native mobile, or backend-rendered apps alike.
-- Follow the project's existing stack and conventions. Introduce a new tool only when it solves a concrete problem.
+---
+
+## Scope
+
+- Stack-agnostic: React · Vue · Next.js · plain HTML · native mobile · backend-rendered.
+- RTL/Arabic projects: load `references/rtl-arabic.md` before any design or layout work.
+- Follow existing conventions. Introduce a new tool only when it solves a concrete problem.
 - Do not reformat or restructure unrelated code.
